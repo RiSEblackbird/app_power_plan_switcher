@@ -157,14 +157,13 @@ def on_close():
     app.destroy()  # ウィンドウを破壊する
 
 # メインの処理
-# メイン処理
-try:
-    app = PowerPlanApp()
-    restore_position(app)
-    app.protocol("WM_DELETE_WINDOW", on_close)  # 終了時処理の設定
-    app.mainloop()
-
-except Exception as e:
-    t, v, tb = sys.exc_info()
-    trace = traceback.format_exception(t, v, tb)
-    print(trace)
+if __name__ == '__main__':  # この条件分岐を追加
+    try:
+        app = PowerPlanApp()
+        restore_position(app)
+        app.protocol("WM_DELETE_WINDOW", on_close)  # 終了時処理の設定
+        app.mainloop()
+    except Exception as e:
+        t, v, tb = sys.exc_info()
+        trace = traceback.format_exception(t, v, tb)
+        print(trace)
